@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background: #fff;
+        }
+        .display {
+            width: 100%;
+            height: 50px;
+            text-align: right;
+            margin-bottom: 10px;
+            font-size: 24px;
+            padding-left: 5px;
+            
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button {
+            width: 100%;
+            height: 50px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #f9f9f9;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #e0e0e0;
+            cursor: pointer;
+        }
+        .calculator{
+            background-color: rgba(226, 223, 219, 0.76);
+            background-image: url('');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        #clear{
+            width: 100%;
+            height: 50px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #e0e0e0;
+            transition: background 0.3s;
+        }
+        #clear:hover{
+            
+            background: #f33737;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style=" background-image: url('https://c0.wallpaperflare.com/preview/778/9/142/geometry-mathematics-calculator-cube.jpg'); background-repeat: no-repeat; background-attachment: fixed;background-size: cover;">
+    
+    <div class="calculator">
+        <input type="text" id="display" class="display" readonly>
+        <div class="buttons">
+            <button class="button" id="clear" onclick="clearDisplay()">C</button>
+            <button class="button" onclick="appendToDisplay('/')">/</button>
+            <button class="button" onclick="appendToDisplay('*')">*</button>
+            <button class="button" onclick="appendToDisplay('-')">-</button>
+
+            <button class="button" onclick="appendToDisplay('7')">7</button>
+            <button class="button" onclick="appendToDisplay('8')">8</button>
+            <button class="button" onclick="appendToDisplay('9')">9</button>
+            <button class="button" onclick="appendToDisplay('+')">+</button>
+
+            <button class="button" onclick="appendToDisplay('4')">4</button>
+            <button class="button" onclick="appendToDisplay('5')">5</button>
+            <button class="button" onclick="appendToDisplay('6')">6</button>
+            <button class="button" onclick="calculateResult()">=</button>
+
+            <button class="button" onclick="appendToDisplay('1')">1</button>
+            <button class="button" onclick="appendToDisplay('2')">2</button>
+            <button class="button" onclick="appendToDisplay('3')">3</button>
+            <button class="button" onclick="appendToDisplay('0')">0</button>
+        </div>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            const display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
